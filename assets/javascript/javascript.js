@@ -12,6 +12,7 @@ Correct query parameters for -
         https://www.eventbriteapi.com/v3/events/search/?sort_by=-distance&location.address=32819&subcategories=11002%2C1003&token=LDTPIPZLQT2AUI7OBDJJ
     Openweather API
         weatherResponse as function title for pull
+        http://api.openweathermap.org/data/2.5/weather?q=32819&appid=37f408cc8e84667b979fff6911c58aa0
     New York Times API
         nytResponse as function title for pull
     Earth911 API
