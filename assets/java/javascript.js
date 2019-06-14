@@ -6,13 +6,45 @@ Correct query parameters for -
     Reddit API
         redditResponse as function title for pull
         https://www.reddit.com/search.json?q=trashtag&sort=new&limit=20
+*/
+$.ajax({
+    url: "https://www.reddit.com/search.json?q=trashtag&sort=new&limit=20",
+    method: "GET"
+})
+    .then(function(redditResponse){
+        console.log(redditResponse);
+    });
+/*
     Eventbrite API
         ebResponse as function title for pull
         API Key = LDTPIPZLQT2AUI7OBDJJ
         https://www.eventbriteapi.com/v3/events/search/?sort_by=-distance&location.address=32819&subcategories=11002%2C1003&token=LDTPIPZLQT2AUI7OBDJJ
+*/
+var ebZip = $("#user-input").val().trim();
+
+$.ajax({
+    url: "https://www.eventbriteapi.com/v3/events/search/?sort_by=-distance&location.address=" + ebZip + "&subcategories=11002%2C1003&token=LDTPIPZLQT2AUI7OBDJJ",
+    method: "GET"
+})
+    .then(function(ebResponse){
+        console.log(ebResponse);
+    });
+/*
     Openweather API
         weatherResponse as function title for pull
         http://api.openweathermap.org/data/2.5/weather?q=32819&appid=37f408cc8e84667b979fff6911c58aa0
+*/
+var weatherZip = $("#user-input").val().trim();
+
+$.ajax({
+    url: "http://api.openweathermap.org/data/2.5/weather?q=" + weatherZip + "&appid=37f408cc8e84667b979fff6911c58aa0",
+    method: "GET"
+})
+    .then(function(weatherResponse){
+        console.log(weatherResponse);
+    });
+
+/*
     New York Times API
         nytResponse as function title for pull
     Earth911 API
