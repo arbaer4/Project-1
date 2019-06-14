@@ -7,6 +7,9 @@ Correct query parameters for -
         redditResponse as function title for pull
     Eventbrite API
         ebResponse as function title for pull
+        API Key = LDTPIPZLQT2AUI7OBDJJ
+        https://www.eventbriteapi.com/v3/events/search/?subcategories=11002%2C1003&token=LDTPIPZLQT2AUI7OBDJJ
+
     Openweather API
         weatherResponse as function title for pull
     New York Times API
