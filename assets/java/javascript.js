@@ -33,6 +33,18 @@ $.ajax({
     Openweather API
         weatherResponse as function title for pull
         http://api.openweathermap.org/data/2.5/weather?q=32819&appid=37f408cc8e84667b979fff6911c58aa0
+*/
+var weatherZip = $("#user-input").val().trim();
+
+$.ajax({
+    url: "http://api.openweathermap.org/data/2.5/weather?q=" + weatherZip + "&appid=37f408cc8e84667b979fff6911c58aa0",
+    method: "GET"
+})
+    .then(function(weatherResponse){
+        console.log(weatherResponse);
+    });
+
+/*
     New York Times API
         nytResponse as function title for pull
     Earth911 API
