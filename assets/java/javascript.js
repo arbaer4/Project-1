@@ -6,6 +6,15 @@ Correct query parameters for -
     Reddit API
         redditResponse as function title for pull
         https://www.reddit.com/search.json?q=trashtag&sort=new&limit=20
+*/
+$.ajax({
+    url: "https://www.reddit.com/search.json?q=trashtag&sort=new&limit=20",
+    method: "GET"
+})
+    .then(function(redditResponse){
+        console.log(redditResponse);
+    });
+/*
     Eventbrite API
         ebResponse as function title for pull
         API Key = LDTPIPZLQT2AUI7OBDJJ
