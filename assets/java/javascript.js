@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Reddit Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#reddit-button").on("click", function () {
+    $("#start-button").on("click", function () {
 
         // Ajax Function searching Reddit API for Trashtag, Sorted by newest, Limited to 20 Returns
         $.ajax({
@@ -12,13 +12,16 @@ $(document).ready(function () {
             .then(function (redditResponse) {
                 console.log(redditResponse);
 
-                // Variables to be pulled and appended to the page
-                let redditTitle = redditResponse.data.children[i].data.title;
-                let redditImage = redditResponse.data.children[i].data.url;
-                let redditLink = redditResponse.data.children[i].data.permalink;
-
                 // For loop to cycle through results
                 for (var i = 0; i < 4; i++) {
+
+                    // Variables to be pulled and appended to the page
+                    let redditTitle = redditResponse.data.children[i].data.title;
+                    let redditImage = redditResponse.data.children[i].data.url;
+                    let redditLink = redditResponse.data.children[i].data.permalink;
+                    console.log(redditTitle);
+                    console.log(redditImage);
+                    console.log(redditLink);
 
                     // Creating Img Tag
                     var redImg = $("<img>");
@@ -39,8 +42,8 @@ $(document).ready(function () {
 
     // EventBrite Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#eventbrite-button").on("click", function () {
-        var ebZip = $("#user-input").val().trim();
+    $("#start-button").on("click", function () {
+        var ebZip = $("#user-input").val();
 
         // Ajax Function searching Eventbrite, filtered by Subcategories including Community and Environment, Zip Code used to return results sorted by closest to farthest from the user's Input
         $.ajax({
@@ -51,13 +54,17 @@ $(document).ready(function () {
             .then(function (ebResponse) {
                 console.log(ebResponse);
 
-                // Variables to be pulled and appended to the page
-                let ebTitle = ebResponse.events[i].name.text;
-                let ebSnippet = ebResponse.events[i].description.text;
-                let ebLink = ebResponse.events[i].url;
-
                 // For loop to cycle through the Results
                 for (var i = 0; i < 6; i++) {
+
+                    // Variables to be pulled and appended to the page
+                    let ebTitle = ebResponse.events[i].name.text;
+                    let ebSnippet = ebResponse.events[i].description.text;
+                    let ebLink = ebResponse.events[i].url;
+
+                    console.log(ebTitle);
+                    console.log(ebSnippet);
+                    console.log(ebLink);
 
                     // Creating Link Tag
                     var ebUrl = $("<a>");
@@ -68,14 +75,14 @@ $(document).ready(function () {
                     $("#content-div").append(ebSnippet);
                     $("#content-div").append(ebUrl);
                 };
-                });
+            });
     });
 
     // OpenWeather On click event
     // TODO: Interaction with what particular responses we want to use from the Object
     // TODO: Include this API Pull with the Eventbrite button event? Pull weather info for the date of the event, in the zip code user provides?
-    $("#weather-button").on("click", function () {
-        var weatherZip = $("#user-input").val().trim();
+    $("#start-button").on("click", function () {
+        var weatherZip = $("#user-input").val();
 
         // Ajax Function searching Openweather for the current forecast in the zip code of the users input
         $.ajax({
@@ -90,12 +97,16 @@ $(document).ready(function () {
                 let owTemp = (weatherResponse.main.temp - 273.15) * (9 / 5) + 32;
                 let owForecast = weatherResponse.weather.main;
                 let owRain = weatherResponse.clouds.all;
+
+                console.log(owTemp);
+                console.log(owForecast);
+                console.log(owRain);
             });
     });
 
     // NY Times On click event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#nyt-button").on("click", function () {
+    $("#start-button").on("click", function () {
 
         $.ajax({
             url: "https://api.nytimes.com/svc/search/v2/articlesearch.json?&fq=news_desk=Environment&sort=newest&api-key=kfv7BnPMd5mvBPeGSaKGQdhyRAGGhhWG",
@@ -105,23 +116,27 @@ $(document).ready(function () {
             .then(function (nytResponse) {
                 console.log(nytResponse);
 
-                // Variables to be pulled and appended to the page
-                let nytSnippet = nytResponse.response.docs[i].snippet;
-                let nytLead = nytResponse.response.docs[i].lead_paragraph;
-                let nytURL = nytResponse.response.docs[i].web_url;
-
                 // For loop to cycle through the results
                 for (var i = 0; i < 11; i++) {
 
+                    // Variables to be pulled and appended to the page
+                    let nytSnippet = nytResponse.response.docs[i].headline.main;
+                    let nytLead = nytResponse.response.docs[i].lead_paragraph;
+                    let nytURL = nytResponse.response.docs[i].web_url;
+
+                    console.log(nytSnippet);
+                    console.log(nytLead);
+                    console.log(nytURL);
+
                     // Creating Link Tag
-                    let nytLink = $("<a>");
-                    nytLink.attr("href", nytUrl);
+                    // let nytLink = $("<a>");
+                    // nytLink.attr("href", nytUrl);
 
                     // Appending to the Div
                     $("#content-div").append(nytSnippet);
                     $("#content-div").append(nytLead);
                     $("#content-div").append(nytLink);
-                    
+
                 }
             });
 
