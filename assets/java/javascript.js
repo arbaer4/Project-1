@@ -129,8 +129,8 @@ $(document).ready(function () {
                     console.log(nytURL);
 
                     // Creating Link Tag
-                    // let nytLink = $("<a>");
-                    // nytLink.attr("href", nytUrl);
+                    let nytLink = $("<a>");
+                    nytLink.attr("href", nytURL);
 
                     // Appending to the Div
                     $("#content-div").append(nytSnippet);
