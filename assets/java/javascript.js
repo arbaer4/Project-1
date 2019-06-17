@@ -19,8 +19,15 @@ $(document).ready(function () {
 
                 for (var i=0; i < 4; i++) {
 
-                    var 
+                    var redImg = $("<img>");
+                    redImg.attr("src", redditImage);
 
+                    var redLink = $("<a>");
+                    redLink.attr("href", redditLink);
+
+                    $("#content-div").append(redImg);
+                    $("#content-div").append(redditTitle);
+                    $("#content-div").append(redLink);
                     // ADD APPENDS HERE
                 }
             });
@@ -44,6 +51,13 @@ $(document).ready(function () {
                 let ebTitle = ebResponse.events[i].name.text;
                 let ebSnippet = ebResponse.events[i].description.text;
                 let ebLink = ebResponse.events[i].url;
+
+                var ebUrl = $("<a>");
+                ebUrl.attr("href", ebLink);
+
+                $("#content-div").append(ebTitle);
+                $("#content-div").append(ebSnippet);
+                $("#content-div").append(ebUrl);
             });
     });
 
@@ -85,6 +99,9 @@ $(document).ready(function () {
                 let nytSnippet = nytResponse.response.docs[i].snippet;
                 let nytLead = nytResponse.response.docs[i].lead_paragraph;
                 let nytURL = nytResponse.response.docs[i].web_url;
+
+                let nytLink = $("<a>");
+                nytLink.attr("href", )
             });
 
     });
