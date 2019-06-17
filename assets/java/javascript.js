@@ -16,6 +16,13 @@ $(document).ready(function () {
                 let redditTitle = redditResponse.data.children[i].data.title;
                 let redditImage = redditResponse.data.children[i].data.url;
                 let redditLink = redditResponse.data.children[i].data.permalink;
+
+                for (var i=0; i < 4; i++) {
+
+                    var 
+
+                    // ADD APPENDS HERE
+                }
             });
     });
 
@@ -91,7 +98,7 @@ $(document).ready(function () {
 
     Consumption Page
         Alex's Consumption function allowing user to Pick a reusable water bottle size, asks how many times they refill daily, and outputs the plastic consumption.
-        
+
 
     Uses for Database/localStorage information
         Possibly useful to save Events from the Eventbrite API
