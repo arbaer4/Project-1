@@ -17,19 +17,23 @@ $(document).ready(function () {
                 let redditImage = redditResponse.data.children[i].data.url;
                 let redditLink = redditResponse.data.children[i].data.permalink;
 
-                for (var i=0; i < 4; i++) {
+                // For loop to cycle through results
+                for (var i = 0; i < 4; i++) {
 
+                    // Creating Img Tag
                     var redImg = $("<img>");
                     redImg.attr("src", redditImage);
 
+                    // Creating Link Tag
                     var redLink = $("<a>");
                     redLink.attr("href", redditLink);
 
+                    // Appending to the Div
                     $("#content-div").append(redImg);
                     $("#content-div").append(redditTitle);
                     $("#content-div").append(redLink);
-                    // ADD APPENDS HERE
-                }
+
+                };
             });
     });
 
@@ -52,13 +56,19 @@ $(document).ready(function () {
                 let ebSnippet = ebResponse.events[i].description.text;
                 let ebLink = ebResponse.events[i].url;
 
-                var ebUrl = $("<a>");
-                ebUrl.attr("href", ebLink);
+                // For loop to cycle through the Results
+                for (var i = 0; i < 6; i++) {
 
-                $("#content-div").append(ebTitle);
-                $("#content-div").append(ebSnippet);
-                $("#content-div").append(ebUrl);
-            });
+                    // Creating Link Tag
+                    var ebUrl = $("<a>");
+                    ebUrl.attr("href", ebLink);
+
+                    // Appending to the Div
+                    $("#content-div").append(ebTitle);
+                    $("#content-div").append(ebSnippet);
+                    $("#content-div").append(ebUrl);
+                };
+                });
     });
 
     // OpenWeather On click event
@@ -100,8 +110,19 @@ $(document).ready(function () {
                 let nytLead = nytResponse.response.docs[i].lead_paragraph;
                 let nytURL = nytResponse.response.docs[i].web_url;
 
-                let nytLink = $("<a>");
-                nytLink.attr("href", )
+                // For loop to cycle through the results
+                for (var i = 0; i < 11; i++) {
+
+                    // Creating Link Tag
+                    let nytLink = $("<a>");
+                    nytLink.attr("href", nytUrl);
+
+                    // Appending to the Div
+                    $("#content-div").append(nytSnippet);
+                    $("#content-div").append(nytLead);
+                    $("#content-div").append(nytLink);
+                    
+                }
             });
 
     });
