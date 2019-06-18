@@ -1,0 +1,17 @@
+
+#header{
+    background-color: green;
+}
+.primary-footer{
+    height: 250px;
+    width: 100%;
+    background-color: green;
+}
+.secondary-footer{
+    height: 40px;
+    width: 100%;
+    background-color: darkgreen;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
