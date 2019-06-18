@@ -215,19 +215,48 @@ $(document).ready(function () {
 
 
 });
-/*
-    Earth911 API
-        earthResponse as function title for pull
 
-        Earth911 API to find local recycling centers. Create inputs to accept type of recycling and zip code
-            Type input possibly best off as a dropdown menu, only give the user the options we know will work, otherwise we may end up with a failed search
+    // Earth911 API
+    $("#start-button").on("click", function () {
+        var earthZip = $("#user-input").val();
 
-    Consumption Page
-        Alex's Consumption function allowing user to Pick a reusable water bottle size, asks how many times they refill daily, and outputs the plastic consumption.
+        $.ajax({
+            url: "https://api.earth911.com/earth911.getPostalData?api_key=27a4dfaff4691499&postal_code=" + earthZip + "&country=us",
+            method: "GET"
+        })
+            // Function Runs after receiving response
+            .then(function (earthResponse) {
+                console.log(earthResponse);
+                let earthLat = earthResponse.result.latitude
+                let earthLong = earthResponse.result.longitude
+
+                $.ajax({
+                    url: "https://api.earth911.com/earth911.searchLocations?api_key=27a4dfaff4691499&latitude=" + earthLat + "&longitude=" + earthLong + "&max_results=20",
+                    method: "GET"
+                })
+
+                // For loop to cycle through the results
+                for (var i = 0; i < 11; i++) {
+
+                    // Variables to be pulled and appended to the page
+                    let earthName = earthResponse.result[i].description;
+                    let earthType = earthResponse.result[i].location_type_id;
 
 
-    Uses for Database/localStorage information
-        Possibly useful to save Events from the Eventbrite API
-        Maybe have a seperate button and tab where the user can save any Articles, Events or #trashtag posts they enjoy.
+                    console.log(earthName);
+                    console.log(earthType);
+                    console.log(earth3);
 
-*/
+                    // Creating Link Tag
+                    let nytLink = $("<a>");
+                    nytLink.attr("href", nytURL);
+
+                    // Appending to the Div
+                    $("#content-div").append(earth1);
+                    $("#content-div").append(earth2);
+                    $("#content-div").append(earth3);
+
+                }
+            });
+
+    });
