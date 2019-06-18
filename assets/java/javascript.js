@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // Reddit Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#reddit-button").on("click", function () {
 
         // Ajax Function searching Reddit API for Trashtag, Sorted by newest, Limited to 20 Returns
         $.ajax({
@@ -32,13 +32,15 @@ $(document).ready(function () {
                     redImg.attr("src", redditImage);
 
                     // Creating Link Tag
-                    var redLink = $("<a>");
+                    var redLink = $("<a href='" + reddintLink + "'>");
                     redLink.attr("href", redditLink);
 
                     // Appending to the Div
-                    $("#content-div").append(redImg);
-                    $("#content-div").append(redditTitle);
-                    $("#content-div").append(redLink);
+                    $("#content-div").html("<div class=row>");
+                    $("#content-div").html("<div class=col s12>");
+                    $("#content-div").html(redImg);
+                    $("#content-div").html(redditTitle);
+                    $("#content-div").html(redLink);
 
                 };
             });
@@ -46,7 +48,7 @@ $(document).ready(function () {
 
     // EventBrite Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#eb-button").on("click", function () {
         var ebZip = $("#user-input").val();
 
         // Ajax Function searching Eventbrite, filtered by Subcategories including Community and Environment, Zip Code used to return results sorted by closest to farthest from the user's Input
@@ -110,7 +112,7 @@ $(document).ready(function () {
 
     // NY Times On click event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#nyt-button").on("click", function () {
 
         $.ajax({
             url: "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=nature&sort=newest&api-key=kfv7BnPMd5mvBPeGSaKGQdhyRAGGhhWG",
@@ -161,7 +163,7 @@ $(document).ready(function () {
     $("#refresh").hide();
 
     //calculating the number of plastic bottles saved by taking the size of the reusable bottle selected, multiplied by the number of times refilled - then dividing that number by 12oz adn rounding it up to give you the number of plastic bottles saved
-    $("img").one("click", function () {
+    $("#consumption-button").one("click", function () {
         let ounces = parseInt($(this).attr("data"));
         //on click animate the image
         $(this).animate({
@@ -217,7 +219,7 @@ $(document).ready(function () {
 });
 
     // Earth911 API
-    $("#start-button").on("click", function () {
+    $("#e911-button").on("click", function () {
         var earthZip = $("#user-input").val();
 
         $.ajax({
@@ -252,8 +254,8 @@ $(document).ready(function () {
                     nytLink.attr("href", nytURL);
 
                     // Appending to the Div
-                    $("#content-div").append(earth1);
-                    $("#content-div").append(earth2);
+                    $("#content-div").append(earthName);
+                    $("#content-div").append(earthType);
                     $("#content-div").append(earth3);
 
                 }
