@@ -28,19 +28,18 @@ $(document).ready(function () {
                     console.log(redditLink);
 
                     // Creating Img Tag
-                    var redImg = $("<img>");
-                    redImg.attr("src", redditImage);
+                    var redImg = $("<img src='" + redditImage + "/>");
+
+                    var redTitle = $("<h4>" + redditTitle + "</h4>");
 
                     // Creating Link Tag
-                    var redLink = $("<a href='" + reddintLink + "'>");
-                    redLink.attr("href", redditLink);
+                    var redLink = $("<a href='https://www.reddit.com" + redditLink + "'>" + "Click here for the original post." + "</a>");
 
                     // Appending to the Div
-                    $("#content-div").html("<div class=row>");
-                    $("#content-div").html("<div class=col s12>");
-                    $("#content-div").html(redImg);
-                    $("#content-div").html(redditTitle);
-                    $("#content-div").html(redLink);
+                    $("#content-div").append(redImg);
+                    $("#content-div").append(redTitle);
+                    $("#content-div").append(redLink);
+                    console.log(redImg);
 
                 };
             });
