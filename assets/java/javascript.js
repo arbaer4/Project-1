@@ -35,7 +35,7 @@ function switchWord($oldWord, $newWord) {
 
     // Reddit Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#reddit-button").on("click", function () {
 
         // Ajax Function searching Reddit API for Trashtag, Sorted by newest, Limited to 20 Returns
         $.ajax({
@@ -58,17 +58,18 @@ function switchWord($oldWord, $newWord) {
                     console.log(redditLink);
 
                     // Creating Img Tag
-                    var redImg = $("<img>");
-                    redImg.attr("src", redditImage);
+                    var redImg = $("<img src='" + redditImage + "/>");
+
+                    var redTitle = $("<h4>" + redditTitle + "</h4>");
 
                     // Creating Link Tag
-                    var redLink = $("<a>");
-                    redLink.attr("href", redditLink);
+                    var redLink = $("<a href='https://www.reddit.com" + redditLink + "'>" + "Click here for the original post." + "</a>");
 
                     // Appending to the Div
                     $("#content-div").append(redImg);
-                    $("#content-div").append(redditTitle);
+                    $("#content-div").append(redTitle);
                     $("#content-div").append(redLink);
+                    console.log(redImg);
 
                 };
             });
@@ -76,7 +77,7 @@ function switchWord($oldWord, $newWord) {
 
     // EventBrite Button On Click Event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#eb-button").on("click", function () {
         var ebZip = $("#user-input").val();
 
         // Ajax Function searching Eventbrite, filtered by Subcategories including Community and Environment, Zip Code used to return results sorted by closest to farthest from the user's Input
@@ -140,7 +141,7 @@ function switchWord($oldWord, $newWord) {
 
     // NY Times On click event
     // TODO: Interaction with what particular responses we want to use from the Object
-    $("#start-button").on("click", function () {
+    $("#nyt-button").on("click", function () {
 
         $.ajax({
             url: "https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=nature&sort=newest&api-key=kfv7BnPMd5mvBPeGSaKGQdhyRAGGhhWG",
@@ -191,7 +192,7 @@ function switchWord($oldWord, $newWord) {
     $("#refresh").hide();
 
     //calculating the number of plastic bottles saved by taking the size of the reusable bottle selected, multiplied by the number of times refilled - then dividing that number by 12oz adn rounding it up to give you the number of plastic bottles saved
-    $("img").one("click", function () {
+    $("#consumption-button").one("click", function () {
         let ounces = parseInt($(this).attr("data"));
         //on click animate the image
         $(this).animate({
@@ -247,7 +248,7 @@ function switchWord($oldWord, $newWord) {
 });
 
     // Earth911 API
-    $("#start-button").on("click", function () {
+    $("#e911-button").on("click", function () {
         var earthZip = $("#user-input").val();
 
         $.ajax({
@@ -282,8 +283,8 @@ function switchWord($oldWord, $newWord) {
                     nytLink.attr("href", nytURL);
 
                     // Appending to the Div
-                    $("#content-div").append(earth1);
-                    $("#content-div").append(earth2);
+                    $("#content-div").append(earthName);
+                    $("#content-div").append(earthType);
                     $("#content-div").append(earth3);
 
                 }
