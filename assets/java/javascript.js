@@ -28,7 +28,7 @@ $(document).ready(function () {
                     console.log(redditLink);
 
                     // Creating Img Tag
-                    var redImg = $("<img src='" + redditImage + "/>");
+                    var redImg = $("<img src='" + redditImage + "' style='height:350px' style='width:400px'/>");
 
                     var redTitle = $("<h4>" + redditTitle + "</h4>");
 
